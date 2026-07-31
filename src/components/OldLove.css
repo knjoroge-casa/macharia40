@@ -36,8 +36,7 @@
   max-height: 420px;
   object-fit: cover;
   object-position: center 65%;
-  margin: 0 -32px 36px;
-  width: calc(100% + 64px);
+  margin: 0 0 36px;
 }
 
 .ol-title {
