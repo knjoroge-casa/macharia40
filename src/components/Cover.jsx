@@ -21,7 +21,7 @@ export default function Cover({ today, prayer, phase, onReveal }) {
           <div className="cover-content">
             <p className="cover-eyebrow">TWENTY-EIGHT MORNINGS</p>
             <h1 className="cover-title">
-              Praying You<br />Into Forty
+              Truly. Madly.<br />Deeply.
             </h1>
 
             <div
