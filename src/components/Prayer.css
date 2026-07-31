@@ -1,0 +1,249 @@
+.prayer-outer {
+  position: relative;
+  height: 100%;
+  background: var(--paper);
+  overflow: hidden;
+  perspective: 1600px;
+}
+
+.prayer-outer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  opacity: .062;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.prayer-scroll {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prayer-leaf {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(43,39,36,.22);
+}
+
+.prayer-leaf--forward {
+  transform-origin: left center;
+  animation: leafForward 880ms cubic-bezier(.5,.03,.28,1) forwards;
+}
+
+.prayer-leaf--back {
+  transform-origin: right center;
+  animation: leafBack 880ms cubic-bezier(.5,.03,.28,1) forwards;
+}
+
+@keyframes leafForward {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-176deg); }
+}
+
+@keyframes leafBack {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(176deg); }
+}
+
+.prayer-leaf-scrim {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 42%;
+  pointer-events: none;
+}
+
+.prayer-leaf-scrim--forward {
+  right: 0;
+  background: linear-gradient(to left, rgba(43,39,36,.16), transparent);
+}
+
+.prayer-leaf-scrim--back {
+  left: 0;
+  background: linear-gradient(to right, rgba(43,39,36,.16), transparent);
+}
+
+.prayer-content {
+  padding: 66px 32px 120px;
+}
+
+.prayer-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 22px;
+}
+
+.prayer-day-label {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 500;
+  font-size: 9.5px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--ochre);
+}
+
+.prayer-date-label {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 400;
+  font-size: 9.5px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.prayer-topic {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 56px;
+  line-height: .98;
+  letter-spacing: -.018em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.prayer-rule {
+  width: 36px;
+  height: 1px;
+  background: var(--ochre);
+  margin-bottom: 24px;
+}
+
+.prayer-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.prayer-para {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 300;
+  font-size: 16.5px;
+  line-height: 1.86;
+  color: var(--ink-body);
+}
+
+.prayer-benediction {
+  background: var(--plum);
+  padding: 30px 26px;
+  margin-top: 46px;
+}
+
+.prayer-benediction-text {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.62;
+  color: #F5EFE2;
+}
+
+.prayer-benediction-sig {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.62;
+  color: rgba(245, 239, 226, 0.72);
+  margin-top: 16px;
+}
+
+.prayer-thought-block {
+  margin-top: 46px;
+}
+
+.prayer-hairline {
+  height: 1px;
+  background: var(--hairline);
+}
+
+.prayer-diamond-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.prayer-hairline--half {
+  flex: 1;
+}
+
+.prayer-diamond {
+  width: 5px;
+  height: 5px;
+  background: var(--olive);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  margin: 8px 0;
+}
+
+.prayer-thought-label {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--olive);
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 12px;
+}
+
+.prayer-thought-text {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 19.5px;
+  line-height: 1.62;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.prayer-thought-source {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted-3);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.prayer-nav {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.prayer-nav-btn {
+  pointer-events: all;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-2);
+  opacity: .7;
+}
+
+.prayer-nav-btn:disabled {
+  opacity: .2;
+}

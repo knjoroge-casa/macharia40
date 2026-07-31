@@ -1,0 +1,66 @@
+.locked-scrim {
+  position: fixed;
+  inset: 0;
+  background: var(--scrim);
+  z-index: 200;
+  animation: scrimIn 220ms ease forwards;
+  display: flex;
+  align-items: flex-end;
+}
+
+@keyframes scrimIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.locked-card {
+  background: var(--paper-raised);
+  width: 100%;
+  padding: 36px 32px 48px;
+  margin-bottom: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: cardUp 220ms ease forwards;
+}
+
+@keyframes cardUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.locked-icon {
+  margin-bottom: 4px;
+}
+
+.locked-day-topic {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 500;
+  font-size: 9.5px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.locked-message {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--ink);
+  text-align: center;
+}
+
+.locked-close {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--muted-1);
+  margin-top: 8px;
+  padding: 8px 0;
+  cursor: pointer;
+}

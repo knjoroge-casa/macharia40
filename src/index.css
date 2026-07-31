@@ -1,0 +1,65 @@
+:root {
+  --paper: #F4EEE1;
+  --paper-raised: #FBF7EE;
+  --paper-nav: #EFE7D6;
+  --cover: #EDE3CF;
+  --ink: #2B2724;
+  --ink-body: #403A32;
+  --ink-soft: #5E5749;
+  --ochre: #A9622C;
+  --olive: #6B7250;
+  --plum: #4E2B3B;
+  --muted-1: #8A8172;
+  --muted-2: #9C9385;
+  --muted-3: #A79E8E;
+  --muted-4: #B3A995;
+  --locked-1: #C4BAA8;
+  --locked-2: #CFC5B2;
+  --locked-3: #AEA492;
+  --hairline: rgba(150, 132, 100, 0.34);
+  --scrim: rgba(43, 39, 36, 0.30);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Libre Franklin', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+textarea {
+  font-family: inherit;
+  resize: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

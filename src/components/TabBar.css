@@ -1,0 +1,46 @@
+.tabbar {
+  flex-shrink: 0;
+  background: var(--paper-nav);
+  padding-bottom: env(safe-area-inset-bottom, 36px);
+}
+
+.tabbar-hairline {
+  height: 1px;
+  background: var(--hairline);
+}
+
+.tabbar-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-top: 15px;
+  padding-bottom: max(36px, env(safe-area-inset-bottom, 0px));
+}
+
+.tabbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.tabbar-label {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #A29887;
+  line-height: 1;
+}
+
+.tabbar-item--active .tabbar-label {
+  color: var(--ink);
+}
+
+.tabbar-diamond {
+  width: 4px;
+  height: 4px;
+  background: var(--ochre);
+  transform: rotate(45deg);
+  margin-top: 7px;
+}
