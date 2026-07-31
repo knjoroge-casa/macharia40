@@ -35,7 +35,7 @@ export default function App() {
     JSON.parse(localStorage.getItem('reflections') || '{}')
   )
 
-  const unlocked = (d) => d <= today
+  const unlocked = (d) => new Date() >= new Date('2026-08-01') && d <= today
 
   const navigateToDay = useCallback((newDay, direction) => {
     if (!unlocked(newDay)) {
