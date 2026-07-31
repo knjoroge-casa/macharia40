@@ -106,11 +106,6 @@ function PrayerContent({ day, prayer, today }) {
 
       <div className="prayer-thought-block">
         <div className="prayer-hairline" />
-        <div className="prayer-diamond-row">
-          <div className="prayer-hairline prayer-hairline--half" />
-          <div className="prayer-diamond" />
-          <div className="prayer-hairline prayer-hairline--half" />
-        </div>
         <p className="prayer-thought-label">A THOUGHT TO CARRY</p>
         <p className="prayer-thought-text">{prayer.thought}</p>
         <p className="prayer-thought-source">— {prayer.thoughtSource}</p>
