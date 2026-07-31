@@ -64,16 +64,6 @@ export default function Prayer({ day, today, prayer, turning, turnDir, fromDay, 
             <path d="M12 4L6 10L12 16" stroke="currentColor" strokeWidth="1.5"/>
           </svg>
         </button>
-        <button
-          className="prayer-nav-btn"
-          onClick={() => canGoForward && onNavigate(day + 1, 'forward')}
-          aria-label="Next day"
-          disabled={!canGoForward}
-        >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M8 4L14 10L8 16" stroke="currentColor" strokeWidth="1.5"/>
-          </svg>
-        </button>
       </div>
     </div>
   )
