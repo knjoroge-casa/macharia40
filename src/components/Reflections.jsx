@@ -40,7 +40,7 @@ export default function Reflections({ today, days, entries, archiveOpen, setArch
       <div className="ref-scroll">
         <div className="ref-header">
           <h2 className="ref-title">Reflections</h2>
-          <p className="ref-subtitle">Yours alone. Nothing here leaves this phone.</p>
+          <p className="ref-subtitle">Your words. Just for you.</p>
           <div className="ref-hairline" />
         </div>
 

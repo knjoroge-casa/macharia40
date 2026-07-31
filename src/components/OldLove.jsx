@@ -51,7 +51,7 @@ export default function OldLove() {
 
         <div className="ol-footer">
           <p className="ol-sig">~ Wangui waku, always.</p>
-          <p className="ol-made">MADE FOR MACHARIA · 2026</p>
+          <p className="ol-made">Made for Ng'ang'a Macharia . 28/08/2026</p>
         </div>
       </div>
     </div>
