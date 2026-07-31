@@ -118,7 +118,7 @@ export default function App() {
                 days={data.days}
                 unlocked={unlocked}
                 onDayTap={handleCalendarTap}
-                onShowCover={() => setCoverUp(true)}
+                onShowCover={() => { setCoverUp(true); setCoverPhase('idle') }}
               />
             )}
             {tab === 'reflections' && (
