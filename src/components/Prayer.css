@@ -184,7 +184,6 @@
   background: var(--olive);
   transform: rotate(45deg);
   flex-shrink: 0;
-  margin: 8px 0;
 }
 
 .prayer-thought-label {

@@ -44,7 +44,9 @@ export default function OldLove() {
         </div>
 
         <div className="ol-divider">
-          <div className="ol-hairline" />
+          <div className="ol-hairline ol-hairline--half" />
+          <div className="ol-diamond" />
+          <div className="ol-hairline ol-hairline--half" />
         </div>
 
         <div className="ol-footer">
