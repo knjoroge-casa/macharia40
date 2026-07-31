@@ -163,12 +163,19 @@
   grid-template-columns: 1fr 1fr;
   gap: 6px;
   margin: 32px -32px;
+  align-items: start;
 }
 
 .prayer-photo {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.prayer-photo--square {
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
 }
 
 .prayer-thought-block {

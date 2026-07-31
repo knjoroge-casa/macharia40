@@ -100,7 +100,7 @@ function PrayerContent({ day, prayer, today }) {
       {day === 11 && (
         <div className="prayer-photos">
           <img src="/kids1.jpeg" alt="" className="prayer-photo" />
-          <img src="/kids2.jpeg" alt="" className="prayer-photo" />
+          <img src="/kids2.jpeg" alt="" className="prayer-photo prayer-photo--square" />
         </div>
       )}
 
