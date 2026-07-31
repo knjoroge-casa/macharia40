@@ -97,6 +97,13 @@ function PrayerContent({ day, prayer, today }) {
         ))}
       </div>
 
+      {day === 11 && (
+        <div className="prayer-photos">
+          <img src="/kids1.jpeg" alt="" className="prayer-photo" />
+          <img src="/kids2.jpeg" alt="" className="prayer-photo" />
+        </div>
+      )}
+
       {day === 28 && prayer.closingBenediction && (
         <div className="prayer-benediction">
           <p className="prayer-benediction-text">{prayer.closingBenediction}</p>

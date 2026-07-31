@@ -158,6 +158,21 @@
   margin-top: 16px;
 }
 
+.prayer-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 32px -32px;
+}
+
+.prayer-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 .prayer-thought-block {
   margin-top: 46px;
 }
