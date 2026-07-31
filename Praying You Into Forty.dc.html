@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..600&amp;family=Libre+Franklin:wght@300;400;500&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Karla:wght@300;400;500&amp;family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300&amp;display=swap">
+<style>
+:root{
+--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' base%46requency='0.9' num%4Fctaves='4' stitch%54iles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23g)' opacity='0.062'/%3E%3C/svg%3E");
+--grain-soft:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' base%46requency='1.1' num%4Fctaves='3' stitch%54iles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23g)' opacity='0.028'/%3E%3C/svg%3E");
+--grain-heavy:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' base%46requency='0.68' num%4Fctaves='4' stitch%54iles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='0.135'/%3E%3C/svg%3E");
+}
+body{margin:0;background:#E6E0D4;font-family:'Libre Franklin',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#A9622C;text-decoration:none}
+a:hover{color:#7C4519}
+textarea,button,input{font-family:inherit}
+.dv-turn{padding:44px 48px 40px;border-bottom:1px solid rgba(60,50,35,.1);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 24px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#2B2724;color:#F5EFE2;border-radius:4px;text-decoration:none}
+.dv-tid:hover{color:#F5EFE2}
+.dv-tname{font:500 13px/1.2 'Libre Franklin',sans-serif;color:#2B2724}
+.dv-opts{display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(60,50,35,.1);color:#2B2724;border-radius:5px;text-decoration:none}
+.dv-oid:hover{color:#2B2724;background:rgba(60,50,35,.18)}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.35 'Libre Franklin',sans-serif;color:rgba(43,39,36,.6);max-width:420px}
+.dv-opt:target .dv-oid{background:#A9622C;color:#FBF7EE}
+.dv-next{margin:26px 0 0;font:12px/1.6 'Libre Franklin',sans-serif;color:rgba(43,39,36,.5)}
+.dv-note{max-width:640px;font:300 13.5px/1.7 'Libre Franklin',sans-serif;color:rgba(43,39,36,.66);margin:0 0 24px}
+.dv-note b{font-weight:500;color:#2B2724}
+@keyframes pgFwd{from{transform:rotateY(0deg)}to{transform:rotateY(-176deg)}}
+@keyframes pgBack{from{transform:rotateY(0deg)}to{transform:rotateY(176deg)}}
+@keyframes coverOpen{from{transform:rotateY(0deg)}to{transform:rotateY(-174deg)}}
+@keyframes inkUp{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes inkIn{from{opacity:0}to{opacity:1}}
+@keyframes breathe{0%,100%{opacity:.32}50%{opacity:.75}}
+@keyframes spin33{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Praying You Into Forty</span></div>
+<p class="dv-note">Twenty-eight mornings, 1 → 28 August, opening on Day 1 with only <i>Rest &amp; Peace</i> unlocked (those two prayers now share the first morning). All the prayers are your words, verbatim. The record turns on the cover — tap to lift the needle and the page turns open into the prayer; the Calendar can put it back on. Paper warmth, type pairing and the Taoist line are tweakable. <b>The slider under the phone is a review control</b> for moving the date so you can see locked days and the reflections archive filling up — it is not part of the app.</p>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="position:relative;height:100%;display:flex;flex-direction:column;overflow:hidden;perspective:1500px;background:#F4EEE1;{{ appTheme }}">
+
+  <div style="flex:1;overflow-y:auto;overflow-x:hidden;background:var(--pbg,#F4EEE1);background-image:var(--pgrain,var(--grain))">
+
+    <sc-if value="{{ isPrayer }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:66px 0 26px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 32px">
+        <span style="font:500 9.5px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#A9622C">Day {{ d.n }}</span>
+        <span style="font:400 9.5px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#9C9385">{{ d.caps }}</span>
+      </div>
+      <h1 style="margin: 22px 32px 0; font: 300 56px/.98 var(--hf,Newsreader),Georgia,serif; letter-spacing: -.018em; color: #2B2724; text-align: center">{{ d.topic }}</h1>
+      <div style="width:36px;height:1px;background:#A9622C;margin:24px 32px 0"></div>
+      <sc-for list="{{ d.paras }}" as="para" hint-placeholder-count="1">
+        <p style="margin:22px 32px 0;font:300 16.5px/1.86 var(--bf,'Libre Franklin'),sans-serif;color:#403A32;text-wrap:pretty">{{ para }}</p>
+      </sc-for>
+
+      <sc-if value="{{ d.benediction }}" hint-placeholder-val="{{ false }}">
+      <div style="margin:40px 32px 0;padding:30px 26px;background:#4E2B3B">
+        <p style="margin:0;font:italic 300 20px/1.62 var(--hf,Newsreader),Georgia,serif;color:#F5EFE2;text-wrap:pretty">{{ d.benediction }}</p>
+        <p style="margin:22px 0 0;font:italic 300 17px/1 var(--hf,Newsreader),Georgia,serif;color:rgba(245,239,226,.72)">Wangui waku</p>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ thoughtOn }}" hint-placeholder-val="{{ true }}">
+      <div style="margin:46px 32px 0">
+        <div style="display:flex;align-items:center;gap:13px">
+          <div style="flex:1;height:1px;background:rgba(150,132,100,.38)"></div>
+          <div style="width:5px;height:5px;background:#6B7250;transform:rotate(45deg)"></div>
+          <div style="flex:1;height:1px;background:rgba(150,132,100,.38)"></div>
+        </div>
+        <p style="margin:20px 0 0;text-align:center;font:500 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#6B7250">A Thought to Carry</p>
+        <p style="margin:18px 0 0;text-align:center;font:italic 300 19.5px/1.62 var(--hf,Newsreader),Georgia,serif;color:#2B2724;text-wrap:pretty">{{ d.thought }}</p>
+        <p style="margin:16px 0 0;text-align:center;font:400 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#A79E8E">{{ d.src }}</p>
+      </div>
+      </sc-if>
+
+      <div style="height:30px"></div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isCal }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:70px 16px 30px">
+      <h2 style="margin: 0; font: 300 32px/1 var(--hf,Newsreader),Georgia,serif; color: #2B2724; letter-spacing: -.01em; text-align: center">The Journey</h2>
+      <p style="margin: 12px 0 0; font: 400 9.5px/1 var(--bf,'Libre Franklin'),sans-serif; letter-spacing: .24em; text-transform: uppercase; color: #9C9385; text-align: center">TO MY WILLIAM, FROM YOUR PHILLIPA.</p>
+      <div style="height:1px;background:rgba(150,132,100,.38);margin:22px 0 0"></div>
+      <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:22px">
+        <sc-for list="{{ cells }}" as="c" hint-placeholder-count="12">
+          <sc-if value="{{ c.isToday }}">
+            <div onClick="{{ c.tap }}" style="aspect-ratio:1;border:1px solid #A9622C;background:#FBF7EE;display:flex;flex-direction:column;justify-content:space-between;padding:6px 5px 7px;cursor:pointer;position:relative">
+              <span style="font:500 8px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.1em;color:#A9622C">{{ c.dd }}</span>
+              <span style="font:400 10.5px/1.1 var(--hf,Newsreader),Georgia,serif;color:#2B2724">{{ c.topic }}</span>
+              <span style="position:absolute;top:7px;right:6px;width:4px;height:4px;background:#A9622C;transform:rotate(45deg)"></span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ c.isPast }}">
+            <div onClick="{{ c.tap }}" style="aspect-ratio:1;border:1px solid rgba(150,132,100,.34);background:#FBF7EE;display:flex;flex-direction:column;justify-content:space-between;padding:6px 5px 7px;cursor:pointer">
+              <span style="font:500 8px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.1em;color:#A9622C">{{ c.dd }}</span>
+              <span style="font:400 10.5px/1.1 var(--hf,Newsreader),Georgia,serif;color:#2B2724">{{ c.topic }}</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ c.locked }}">
+            <div onClick="{{ c.tap }}" style="aspect-ratio:1;border:1px solid rgba(150,132,100,.2);background:transparent;display:flex;flex-direction:column;justify-content:space-between;padding:6px 5px 7px;cursor:pointer;position:relative">
+              <span style="font:500 8px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.1em;color:#C4BAA8">{{ c.dd }}</span>
+              <span style="font:400 10.5px/1.1 var(--hf,Newsreader),Georgia,serif;color:#AEA492">{{ c.topic }}</span>
+              <span style="position:absolute;top:6px;right:6px;display:block;width:7px;height:8px">
+                <span style="position:absolute;bottom:0;left:0;width:8px;height:5.5px;background:#CFC5B2"></span>
+                <span style="position:absolute;top:0;left:1.6px;width:4.8px;height:5px;border:1.2px solid #CFC5B2;border-bottom:0;border-radius:3px 3px 0 0"></span>
+              </span>
+            </div>
+          </sc-if>
+        </sc-for>
+        <div onClick="{{ tapFinal }}" style="grid-column:span 3;border:1px solid rgba(150,132,100,.2);padding:6px 10px 7px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between">
+            <span style="font:500 8px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.1em;color:#C4BAA8">28</span>
+            <span style="position:relative;display:block;width:7px;height:8px"><span style="position:absolute;bottom:0;left:0;width:7px;height:5px;background:#CFC5B2"></span><span style="position:absolute;top:0;left:1.4px;width:4.2px;height:4.4px;border:1.2px solid #CFC5B2;border-bottom:0;border-radius:3px 3px 0 0"></span></span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:9px">
+            <span style="font:400 17px/1.05 var(--hf,Newsreader),Georgia,serif;color:#AEA492">Blessing</span>
+            <span style="font:400 8px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#C4BAA8;flex:none">Forty</span>
+          </div>
+        </div>
+      </div>
+      <div onClick="{{ backToRecord }}" style="margin:34px 0 6px;padding:22px 0 0;border-top:1px solid rgba(150,132,100,.28);display:flex;align-items:center;gap:14px;cursor:pointer">
+        <span style="position:relative;display:block;width:34px;height:34px;flex:none;animation:spin33 9s linear infinite">
+          <span style="position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#2B2724 0 1.2px,#3A342E 1.2px 2.4px)"></span>
+          <span style="position:absolute;inset:11px;border-radius:50%;background:#A9622C"></span>
+          <span style="position:absolute;top:50%;left:50%;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--pbg,#F4EEE1)"></span>
+        </span>
+        <span style="flex:1;font:italic 300 16px/1.4 var(--hf,Newsreader),Georgia,serif;color:#5E5749">Put today's record back on</span>
+        <span style="font:400 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#A9622C;flex:none">Play</span>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isRef }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:70px 30px 30px">
+      <h2 style="margin: 0; font: 300 32px/1 var(--hf,Newsreader),Georgia,serif; color: #2B2724; letter-spacing: -.01em; text-align: center">Reflections</h2>
+      <p style="margin: 12px 0 0; font: 300 13px/1.6 var(--bf,'Libre Franklin'),sans-serif; color: #8A8172; text-align: center">Your words. Just for you.</p>
+      <div style="height:1px;background:rgba(150,132,100,.38);margin:24px 0 0"></div>
+      <div style="margin-top:24px;display:flex;align-items:baseline;gap:10px">
+        <span style="font:500 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#A9622C">Today</span>
+        <span style="font:400 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#9C9385">{{ today.caps }} · {{ today.topic }}</span>
+      </div>
+      <p style="margin:14px 0 0;font:italic 300 21px/1.45 var(--hf,Newsreader),Georgia,serif;color:#2B2724;text-wrap:pretty">{{ today.prompt }}</p>
+      <textarea value="{{ draft }}" onChange="{{ onDraft }}" placeholder="…" style="margin-top:18px;width:100%;box-sizing:border-box;min-height:200px;border:0;outline:0;resize:none;padding:0;background-color:transparent;background-image:repeating-linear-gradient(rgba(0,0,0,0) 0px,rgba(0,0,0,0) 27px,rgba(107,114,80,.2) 27px,rgba(107,114,80,.2) 28px);font:300 15px/28px var(--bf,'Libre Franklin'),sans-serif;color:#3A342C"></textarea>
+      <sc-if value="{{ hasPast }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ toggleArchive }}" style="margin-top:28px;padding:16px 0;border-top:1px solid rgba(150,132,100,.3);border-bottom:1px solid rgba(150,132,100,.3);display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer">
+          <span style="font:500 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#9C9385">Earlier · {{ pastCount }}</span>
+          <span style="{{ chevronStyle }}"></span>
+        </div>
+        <sc-if value="{{ archiveOpen }}" hint-placeholder-val="{{ true }}">
+          <div style="animation:inkUp 320ms ease both">
+            <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-top:18px">
+              <sc-for list="{{ dowLabels }}" as="w" hint-placeholder-count="7">
+                <div style="text-align:center;font:400 8px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#B3A995;padding-bottom:6px">{{ w }}</div>
+              </sc-for>
+              <sc-for list="{{ archiveCells }}" as="c" hint-placeholder-count="35">
+                <sc-if value="{{ c.blank }}"><div></div></sc-if>
+                <sc-if value="{{ c.outside }}">
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font:300 12.5px/1 var(--bf,'Libre Franklin'),sans-serif;color:#D4CBBA">{{ c.dd }}</div>
+                </sc-if>
+                <sc-if value="{{ c.selected }}">
+                  <div onClick="{{ c.tap }}" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font:500 12.5px/1 var(--bf,'Libre Franklin'),sans-serif;color:#FBF7EE;background:#A9622C;cursor:pointer">{{ c.dd }}</div>
+                </sc-if>
+                <sc-if value="{{ c.written }}">
+                  <div onClick="{{ c.tap }}" style="position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font:400 12.5px/1 var(--bf,'Libre Franklin'),sans-serif;color:#2B2724;border:1px solid rgba(169,98,44,.42);cursor:pointer">{{ c.dd }}<span style="position:absolute;bottom:4px;left:50%;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:#A9622C"></span></div>
+                </sc-if>
+                <sc-if value="{{ c.blankDay }}">
+                  <div onClick="{{ c.tap }}" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font:300 12.5px/1 var(--bf,'Libre Franklin'),sans-serif;color:#A79E8E;border:1px solid rgba(150,132,100,.18);cursor:pointer">{{ c.dd }}</div>
+                </sc-if>
+                <sc-if value="{{ c.ahead }}">
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font:300 12.5px/1 var(--bf,'Libre Franklin'),sans-serif;color:#D4CBBA">{{ c.dd }}</div>
+                </sc-if>
+              </sc-for>
+            </div>
+            <p style="margin:20px 0 0;font:300 13px/1.7 var(--bf,'Libre Franklin'),sans-serif;color:#A79E8E">Tap a day to read what you wrote.</p>
+          </div>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ noPast }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:32px;padding:22px 0 0;border-top:1px solid rgba(150,132,100,.22)">
+          <p style="margin:0;font:300 13px/1.75 var(--bf,'Libre Franklin'),sans-serif;color:#A79E8E;max-width:280px">This is the first page. Whatever you write will still be here on the last one.</p>
+        </div>
+      </sc-if>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:70px 32px 30px">
+      <h2 style="margin: 0; font: 300 32px/1 var(--hf,Newsreader),Georgia,serif; color: #2B2724; letter-spacing: -.01em; text-align: center">Old Love</h2>
+      <div style="height:1px;background:rgba(150,132,100,.38);margin:22px 0 0"></div>
+      <p style="margin: 28px 0 0; font: italic 300 21px/1.62 var(--hf,Newsreader),Georgia,serif; color: #2B2724; text-wrap: pretty; text-align: center; font-size: 28px">Truly. Madly. Deeply.</p>
+      <div style="width:36px;height:1px;background:#A9622C;margin:30px 0 0"></div>
+      <p style="margin: 26px 0 0; font: 500 9px/1 var(--bf,'Libre Franklin'),sans-serif; letter-spacing: .28em; text-transform: uppercase; color: #A9622C; font-style: italic; text-align: center">LEGEND HAS IT THAT THEY WERE NEVER APART FOR MORE THAN A FEW HOURS.</p>
+      
+      
+      <p style="margin:22px 0 0;font:italic 300 20px/1.55 var(--hf,Newsreader),Georgia,serif;color:#5E5749">This isn't a countdown. It's a pause.</p>
+      <p style="margin: 22px 0 0; font: 300 15.5px/1.85 var(--bf,'Libre Franklin'),sans-serif; color: #403A32; text-wrap: pretty; text-align: left">For the next twenty-eight days, I wanted to give you something that couldn't be wrapped, spent, or eventually forgotten. So instead of a gift you'll open once, I wrote you one you'll open every day.</p>
+      <p style="margin: 14px 0 0; font: 300 15.5px/1.85 var(--bf,'Libre Franklin'),sans-serif; color: #403A32; text-wrap: pretty; text-align: left">Each morning, another page unfolds. Another part of your life is covered in prayer. Your rest. Your healing. Your mind. Your work. Your daughters. Our relationship. Your future. The man you are. The man you are still becoming.</p>
+      <p style="margin: 14px 0 0; font: 300 15.5px/1.85 var(--bf,'Libre Franklin'),sans-serif; color: #403A32; text-wrap: pretty; text-align: left">After each prayer, you'll find <strong style="font-weight:500;color:#2B2724"><i style="">A Thought to Carry</i></strong>—a small piece of Taoist wisdom that reminded me of you. Not to answer life's questions, but to sit with you as you move through your day.</p>
+      <p style="margin:14px 0 0;font:300 15.5px/1.85 var(--bf,'Libre Franklin'),sans-serif;color:#403A32;text-wrap:pretty">Some days these words may feel exactly right. Some days they may not. That's okay. Return to them when you need them. They were never written just for these twenty-eight days. They were written for every version of you that comes after.</p>
+      <p style="margin:14px 0 0;font:300 15.5px/1.85 var(--bf,'Libre Franklin'),sans-serif;color:#403A32;text-wrap:pretty">There is no race to the end. No streaks to keep. No boxes to tick. Just one page each day.</p>
+      <p style="margin:14px 0 0;font:300 15.5px/1.85 var(--bf,'Libre Franklin'),sans-serif;color:#403A32;text-wrap:pretty">I hope that years from now, this feels less like an app and more like a well-loved notebook you've reached for so many times that it naturally falls open to the pages you needed most.</p>
+      
+      <p style="margin:14px 0 0;font:300 15.5px/1.85 var(--bf,'Libre Franklin'),sans-serif;color:#403A32;text-wrap:pretty">Thank you for letting me walk beside you, not just in this chapter, but in the story we're still writing together.</p>
+      <div style="margin:44px 0 10px;display:flex;align-items:center;gap:13px">
+        <div style="flex:1;height:1px;background:rgba(150,132,100,.38)"></div>
+        <div style="width:5px;height:5px;background:#6B7250;transform:rotate(45deg)"></div>
+        <div style="flex:1;height:1px;background:rgba(150,132,100,.38)"></div>
+      </div>
+      <p style="margin:22px 0 0;text-align:center;font:italic 300 22px/1.4 var(--hf,Newsreader),Georgia,serif;color:#4E2B3B">~ Wangui waku, always.</p>
+      <p style="margin:10px 0 0;text-align:center;font:400 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#A79E8E">Made for Macharia · 2026</p>
+    </div>
+    </sc-if>
+
+  </div>
+
+  <nav style="flex:none;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(150,132,100,.34);background:var(--pbg2,#EFE7D6);padding:15px 0 36px;position:relative;z-index:20">
+    <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+      <sc-if value="{{ t.on }}">
+        <div onClick="{{ t.tap }}" style="display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer">
+          <span style="font:400 13px/1 var(--hf,Newsreader),Georgia,serif;color:#2B2724;letter-spacing:.01em">{{ t.label }}</span>
+          <span style="width:4px;height:4px;background:#A9622C;transform:rotate(45deg)"></span>
+        </div>
+      </sc-if>
+      <sc-if value="{{ t.off }}">
+        <div onClick="{{ t.tap }}" style="display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer">
+          <span style="font:400 13px/1 var(--hf,Newsreader),Georgia,serif;color:#A29887;letter-spacing:.01em">{{ t.label }}</span>
+          <span style="width:4px;height:4px;background:transparent"></span>
+        </div>
+      </sc-if>
+    </sc-for>
+  </nav>
+
+  <sc-if value="{{ card }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeCard }}" style="position:absolute;inset:0;z-index:42;background:rgba(43,39,36,.3);display:flex;align-items:center;justify-content:center;padding:0 22px 76px;animation:inkIn 220ms ease both">
+      <div style="width:100%;max-height:74%;overflow-y:auto;box-sizing:border-box;background:#FBF7EE;background-image:var(--grain-soft);border:1px solid rgba(150,132,100,.42);padding:30px 26px 26px;box-shadow:0 26px 64px rgba(43,39,36,.26);animation:inkUp 320ms cubic-bezier(.2,.7,.3,1) both">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+          <span style="font:500 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#A9622C">{{ card.caps }}</span>
+          <span style="font:400 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#9C9385;flex:none">Day {{ card.n }}</span>
+        </div>
+        <h3 style="margin:16px 0 0;font:300 34px/1 var(--hf,Newsreader),Georgia,serif;color:#2B2724;letter-spacing:-.012em">{{ card.topic }}</h3>
+        <div style="width:30px;height:1px;background:#A9622C;margin:20px 0 0"></div>
+        <p style="margin:20px 0 0;font:italic 300 16px/1.5 var(--hf,Newsreader),Georgia,serif;color:#8A8172;text-wrap:pretty">{{ card.prompt }}</p>
+        <p style="margin:16px 0 0;font:300 15px/1.85 var(--bf,'Libre Franklin'),sans-serif;color:{{ card.color }};text-wrap:pretty">{{ card.text }}</p>
+        <p style="margin:24px 0 0;font:400 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#A9622C;cursor:pointer">Close</p>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ lockMsg }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLock }}" style="position:absolute;inset:0;z-index:40;background:rgba(43,39,36,.28);display:flex;align-items:flex-end;padding:0 18px 104px;animation:inkIn 260ms ease both">
+      <div style="width:100%;background:#FBF7EE;background-image:var(--grain);border:1px solid rgba(150,132,100,.4);padding:28px 26px 26px;box-shadow:0 24px 60px rgba(43,39,36,.24);animation:inkUp 380ms cubic-bezier(.2,.7,.3,1) both">
+        <div style="display:flex;align-items:center;gap:9px">
+          <span style="position:relative;display:block;width:9px;height:10px"><span style="position:absolute;bottom:0;left:0;width:9px;height:6px;background:#C7BDAA"></span><span style="position:absolute;top:0;left:1.8px;width:5.4px;height:5.5px;border:1.3px solid #C7BDAA;border-bottom:0;border-radius:3px 3px 0 0"></span></span>
+          <span style="font:400 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#9C9385">{{ lockTopic }}</span>
+        </div>
+        <p style="margin:16px 0 0;font:italic 300 21px/1.5 var(--hf,Newsreader),Georgia,serif;color:#2B2724;text-wrap:pretty">{{ lockMsg }}</p>
+        <p style="margin:20px 0 0;font:400 9px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#A9622C;cursor:pointer">Close</p>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ turning }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;z-index:38;pointer-events:none;perspective:1600px">
+      <div style="{{ leafStyle }}">
+        <div style="position:absolute;inset:0;background:var(--pbg,#F4EEE1);background-image:var(--pgrain,var(--grain))"></div>
+        <div style="position:absolute;top:66px;left:0;right:0;padding:0 32px">
+          <span style="font:500 9.5px/1 var(--bf,'Libre Franklin'),sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#A9622C">Day {{ from.n }}</span>
+          <h1 style="margin:22px 0 0;font:300 56px/.98 var(--hf,Newsreader),Georgia,serif;letter-spacing:-.018em;color:#2B2724">{{ from.topic }}</h1>
+          <div style="width:36px;height:1px;background:#A9622C;margin:24px 0 0"></div>
+          <p style="margin:22px 0 0;font:300 16.5px/1.86 var(--bf,'Libre Franklin'),sans-serif;color:#403A32;opacity:.55">{{ from.excerpt }}</p>
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(43,39,36,.16),rgba(43,39,36,0) 42%)"></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ coverUp }}" hint-placeholder-val="{{ true }}">
+    <div onClick="{{ openCover }}" style="{{ coverStyle }}">
+      <div style="position:absolute;inset:0;background:#EDE3CF;background-image:var(--grain-heavy)"></div>
+      <div style="position:absolute;top:0;bottom:0;left:0;width:26px;background:linear-gradient(90deg,rgba(43,39,36,.14),rgba(43,39,36,0))"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:92px 44px 132px;box-sizing:border-box;text-align:center">
+        <p style="margin:0;font:400 9px/1 'Libre Franklin',sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#8E8471">Twenty-eight mornings</p>
+        <h1 style="margin:22px 0 0;font:300 40px/1.06 Newsreader,Georgia,serif;letter-spacing:-.02em;color:#2B2724">Praying You<br>Into Forty</h1>
+        <div style="{{ coverDiscStyle }}">
+          <div style="position:relative;width:100%;height:100%;animation:spin33 9s linear infinite">
+            <div style="position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#2B2724 0 1.6px,#332E29 1.6px 3.2px);box-shadow:0 18px 44px rgba(43,39,36,.34)"></div>
+            <div style="position:absolute;inset:56px;border-radius:50%;background:#A9622C;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <div style="font:400 7.5px/1 'Libre Franklin',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:rgba(251,247,238,.72)">Day {{ coverDay }}</div>
+              <div style="margin-top:7px;font:300 26px/1 Newsreader,Georgia,serif;color:#FBF7EE">{{ coverTopic }}</div>
+              <div style="margin-top:7px;font:400 7px/1 'Libre Franklin',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(251,247,238,.6)">{{ coverDate }}</div>
+            </div>
+            <div style="position:absolute;top:50%;left:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:#EDE3CF"></div>
+          </div>
+        </div>
+        <p style="margin:0;font:italic 300 18px/1.4 Newsreader,Georgia,serif;color:#5E5749">for Macharia</p>
+      </div>
+      <div style="{{ coverFootStyle }}">
+        <p style="margin:0;font:italic 300 20px/1.3 Newsreader,Georgia,serif;color:#4E2B3B">Wangui waku</p>
+        <p style="margin:18px 0 0;font:400 8.5px/1 'Libre Franklin',sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#9C9385;animation:breathe 3.4s ease-in-out infinite">Lift the needle</p>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-import>
+<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(43,39,36,.05);border:1px dashed rgba(43,39,36,.18);max-width:402px;box-sizing:border-box">
+  <span style="font:500 8.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(43,39,36,.45);flex:none;max-width:78px">Review<br>control</span>
+  <input type="range" min="1" max="28" step="1" value="{{ todayN }}" onChange="{{ setToday }}" style="flex:1;accent-color:#A9622C">
+  <span style="font:400 10px/1.3 ui-monospace,Menlo,monospace;color:rgba(43,39,36,.6);flex:none;width:96px;text-align:right">{{ todayLabel }}</span>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "swap the thought on Day 12" · "let him mark a day as read" · "add a gentle morning notification"</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;paperWarmth&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Bleached linen&quot;,&quot;Cream stock&quot;,&quot;Aged foolscap&quot;],&quot;default&quot;:&quot;Cream stock&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Paper&quot;},&quot;typePairing&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Editorial&quot;,&quot;Delicate&quot;,&quot;Bookish&quot;],&quot;default&quot;:&quot;Editorial&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Type&quot;},&quot;showThought&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prayer page&quot;}}">
+class Component extends DCLogic {
+  DAYS = [
+    {n:1,iso:"2026-08-01",topic:"Rest & Peace",p:["Thank You for carrying Macharia through another day. Let tonight be different. Let his mind find stillness, his body find true rest, and his spirit remember that he does not have to carry every burden alone. Lift the weight he was never meant to bear, and replace every anxious thought with Your perfect peace.","Where fear speaks loudly, let Your voice be louder. Teach his heart to rest in what is true instead of what is uncertain. Guard his mind as he sleeps tonight, and let tomorrow greet him with fresh mercy, renewed strength, quiet confidence, and hope. May he wake knowing that You have gone before him, that he is deeply loved, and that he is never alone."],t:"Return to the root, and the root is stillness. To return to stillness is to return to what does not change.",s:"Tao Te Ching, 16",q:"How are you feeling today?"},
+    {n:2,iso:"2026-08-02",topic:"Healing",p:["Heal what no one else can see. Touch the places inside Macharia that still ache from disappointment, grief, betrayal, and loss. Remove shame and replace it with dignity. Restore what pain has tried to steal from him. Heal his body, his mind, and the places in his heart that words cannot reach. May healing become not just something he experiences, but part of who he becomes. Amen."],t:"No one can see themselves in running water. Only in water that has come to rest.",s:"Zhuangzi, 5",q:"What are you slowly letting go of?"},
+    {n:3,iso:"2026-08-03",topic:"Identity",p:["Remind Macharia who he is. Not by what he has achieved, lost, or failed at, but by who You created him to be. Let him know he is deeply loved, deeply seen, and never abandoned. Strip away every false label and every burden of expectation that was never his to carry. May he walk confidently as the man You have always known him to be. Amen."],t:"To know others is knowledge. To know yourself is clear sight.",s:"Tao Te Ching, 33",q:"Which name do you answer to most — the one you were given, or the one you earned?"},
+    {n:4,iso:"2026-08-04",topic:"Courage",p:["Give Macharia courage for the things that feel impossible. May he face difficult conversations, uncertain decisions, and unseen battles knowing that You walk beside him. Replace hesitation with quiet confidence. Give him courage not only to face the world, but also to face himself with honesty, grace, and hope. Amen."],t:"The sage meets what cannot be avoided and is not shaken by it. This is the courage of a whole man.",s:"Zhuangzi, 17",q:"What conversation have you been putting off?"},
+    {n:5,iso:"2026-08-05",topic:"Wisdom",p:["Bless Macharia with wisdom beyond his own understanding. Help him know when to move, when to wait, when to speak, and when silence is the wiser path. Guide every decision he makes today. May wisdom shape his choices, protect his future, and bless everyone whose lives intersect with his. Amen."],t:"To know that you do not know is best. To not know, and think you know, is the sickness.",s:"Tao Te Ching, 71",q:"Where do you need to wait rather than move?"},
+    {n:6,iso:"2026-08-06",topic:"Joy",p:["Restore joy to Macharia. Let laughter return naturally. Surprise him with moments of lightness. Remind him that joy is not the absence of hardship but the presence of hope. May delight find him in ordinary moments and may his smile become easier with every passing day. Amen."],t:"See how the small fish dart about, free and easy. That is what fishes enjoy.",s:"Zhuangzi, 17",q:"When did you last laugh without meaning to?"},
+    {n:7,iso:"2026-08-07",topic:"His Calling",p:["Continue shaping the purpose You placed inside Macharia before he was born. Open the right doors, close the wrong ones, and make his path unmistakably clear. Let him walk boldly in the work only he can do. May he never confuse success with purpose, but find fulfilment in faithfully becoming the man he was created to be. Amen."],t:"The tree that fills your arms grew from a shoot no thicker than a thread. A journey of a thousand miles begins beneath your feet.",s:"Tao Te Ching, 64",q:"What work would you do even if no one paid you for it?"},
+    {n:8,iso:"2026-08-08",topic:"Provision",p:["Provide abundantly for Macharia. Bless the work of his hands. Give him opportunities, favour, wise partnerships, and enough to bless others. Remove lack and replace it with confidence that You will provide what he needs. May abundance become a tool for generosity rather than a source of anxiety. Amen."],t:"To know when you have enough is to be rich.",s:"Tao Te Ching, 33",q:"What do you already have enough of?"},
+    {n:9,iso:"2026-08-09",topic:"His Mind",p:["Strengthen Macharia's mind. Where there is overwhelm, bring clarity. Where there is exhaustion, renew him. Let his thoughts become places of creativity, wisdom, and peace rather than fear and self-doubt. Help him think clearly, dream boldly, and trust himself again. Amen."],t:"Thirty spokes meet at one hub. It is the empty space at the centre that makes the wheel of use.",s:"Tao Te Ching, 11",q:"What has been taking up the most room in your head?"},
+    {n:10,iso:"2026-08-10",topic:"Freedom",p:["Break every chain that still holds Macharia back. Free him from old patterns, unhealthy coping, fear, guilt, and every lie that tells him he cannot change. Let freedom become his new normal. May he walk lightly, no longer carrying what has already been surrendered. Amen."],t:"He who is bound by nothing has nowhere he cannot go.",s:"Zhuangzi, 1",q:"What are you still carrying that you already put down?"},
+    {n:11,iso:"2026-08-11",topic:"Fatherhood",p:["Bless Macharia as a father. Deepen the bond between him and his daughters. Let them know his love, and let him know theirs. Redeem lost moments and multiply the beautiful ones still to come. May he always be a place of safety, encouragement, and unwavering love in their lives. Amen."],t:"It gives life and does not possess. It guides and does not rule. This is the deepest kind of care.",s:"Tao Te Ching, 51",q:"What do you hope your daughters remember?"},
+    {n:12,iso:"2026-08-12",topic:"Relationships",p:["Thank You for the gift Macharia is to the people who love him. Continue to surround him with relationships that strengthen, encourage, and sharpen him. Remove every connection that brings confusion, discouragement, or harm, and deepen those rooted in honesty, loyalty, grace, and mutual respect.","Thank You for the way he leads us with intention, steadiness, kindness, and love. Continue to grow him into the man You have called him to be, and help him always lead from a place of humility, wisdom, and a heart that reflects Yours. May he know the joy of being deeply loved, fully known, and never carrying life's burdens alone. Bless our relationship, that together we may continue to build something that brings out the very best in one another. Amen."],t:"Those who are good, I am good to. Those who are not good, I am also good to. In this way goodness is gained.",s:"Tao Te Ching, 49",q:"Who has been good to you lately?"},
+    {n:13,iso:"2026-08-13",topic:"Leadership",p:["Make Macharia a leader who serves with humility, courage, and integrity. Let others be better because he was present. Give him influence that reflects Your heart, and wisdom to know that true leadership begins with character. May he lead with compassion instead of ego, conviction instead of fear, and quiet confidence instead of the need to prove himself. Let the people entrusted to him flourish because he chose to love and serve well. Amen."],t:"The best leader is barely known to those he leads. When the work is finished, they say: we did this ourselves.",s:"Tao Te Ching, 17",q:"Who is better because you were in the room?"},
+    {n:14,iso:"2026-08-14",topic:"Discipline",p:["Strengthen Macharia's resolve. Help him choose what builds his future over what only comforts the present. Let discipline become a gift rather than a burden, and consistency become one of his greatest strengths. Give him grace on the days he feels tired and determination on the days he feels discouraged. May every small step he takes today become part of the life he has been praying for. Amen."],t:"Meet the hard while it is still easy. Do the great while it is still small.",s:"Tao Te Ching, 63",q:"What small thing, done daily, would change the year?"},
+    {n:15,iso:"2026-08-15",topic:"Hope",p:["Breathe fresh hope into Macharia today. Wherever dreams have grown dim, reignite them. Help him believe again that good things are still ahead. Replace disappointment with expectation, and uncertainty with quiet trust. Remind him that delays are not denials, and that even when he cannot see what You are doing, You are still working on his behalf. Amen."],t:"Returning is the movement of the way. Yielding is how it works.",s:"Tao Te Ching, 40",q:"What are you hopeful for today?"},
+    {n:16,iso:"2026-08-16",topic:"Protection",p:["Surround Macharia with Your protection. Guard his body, mind, heart, work, and every journey he takes. Keep him safe from harm, seen and unseen. Protect his peace from unnecessary conflict, his heart from discouragement, and his purpose from distraction. Let him walk confidently, knowing he is covered by Your love and guided by Your hand. Amen."],t:"He walks through the world and finds no place where harm can enter.",s:"Tao Te Ching, 50",q:"Where do you feel most exposed?"},
+    {n:17,iso:"2026-08-17",topic:"Humility",p:["Keep Macharia teachable. Give him the humility to grow, to receive correction with wisdom, and to continue becoming more like the man You designed him to be. Help him remain secure enough to admit when he is wrong and courageous enough to keep learning. May humility never diminish his strength but instead become one of the reasons people trust and respect him. Amen."],t:"The rivers and seas rule the hundred valleys because they know how to lie below them.",s:"Tao Te Ching, 66",q:"What have you learned recently that you didn't expect to?"},
+    {n:18,iso:"2026-08-18",topic:"Strength",p:["Renew Macharia's strength. When he feels he has nothing left, become his strength. Help him keep going one faithful step at a time until joy catches up with him again. Restore what stress has depleted and what hardship has worn thin. Let resilience become his testimony, and may he discover that Your strength is greatest where his own ends. Amen."],t:"Nothing in the world is softer than water, yet nothing is better at wearing away what is hard.",s:"Tao Te Ching, 78",q:"What has taken the most out of you this week?"},
+    {n:19,iso:"2026-08-19",topic:"Patience",p:["Teach Macharia patience with himself, with others, and with Your timing. Let waiting refine him rather than discourage him. Help him trust that every season has a purpose and every delay has the potential to shape him. Give him peace while he waits and wisdom to recognise the right moment when it comes. Amen."],t:"Who can be still until the muddy water clears? Who can stay at rest until the moment to move arrives?",s:"Tao Te Ching, 15",q:"What are you waiting on?"},
+    {n:20,iso:"2026-08-20",topic:"Gratitude",p:["Open Macharia's eyes to the gifts already surrounding him. May gratitude become the soil where peace, generosity, and joy continue to grow. Help him notice the quiet blessings that are easy to overlook and celebrate the progress that has already been made. May a thankful heart give him strength for whatever lies ahead. Amen."],t:"There is no greater misfortune than not knowing what is enough.",s:"Tao Te Ching, 46",q:"Name three things from today. Small ones count."},
+    {n:21,iso:"2026-08-21",topic:"Creativity",p:["Awaken every gift You have placed inside Macharia. Let new ideas flow freely. May creativity meet opportunity, and may his work bring life to others. Give him the courage to build what has never been built before and the wisdom to recognise the opportunities placed before him. Bless the work of his mind as richly as the work of his hands. Amen."],t:"The cook's blade has been used nineteen years and is still as sharp as new. He does not cut through; he finds the openings that are already there.",s:"Zhuangzi, 3",q:"What idea keeps coming back?"},
+    {n:22,iso:"2026-08-22",topic:"Integrity",p:["Keep Macharia steady in truth. Let his character remain strong when no one is watching. May his yes mean yes, and his life reflect honesty, courage, and compassion. Let him never compromise what matters most for what matters least. Build in him a reputation that is earned through faithfulness, kindness, and unwavering integrity. Amen."],t:"In dwelling, keep to the ground. In speaking, keep to the truth. In acting, keep to what is right.",s:"Tao Te Ching, 8",q:"Where is it costing you to do the right thing?"},
+    {n:23,iso:"2026-08-23",topic:"Love",p:["Help Macharia receive love without fear and give love without reservation. Heal every place where love once felt unsafe, and teach him that perfect love casts out fear. May he always know he is worthy of being loved deeply, honestly, and completely. Let the love he gives become a source of healing, safety, and joy for those closest to him. Amen."],t:"I have three treasures which I hold and keep. The first of them is compassion.",s:"Tao Te Ching, 67",q:"Who do you find it hardest to receive love from?"},
+    {n:24,iso:"2026-08-24",topic:"Faith",p:["Deepen Macharia's faith. Help him trust even when the path is hidden. Let his confidence rest not in certainty but in Your faithfulness. Strengthen him to keep believing through unanswered questions and unexpected turns. May his faith become an anchor that steadies him in every storm and a light that guides him through every season. Amen."],t:"The way is hidden and has no name. Yet it alone nourishes and brings to completion.",s:"Tao Te Ching, 41",q:"What do you not understand yet, but still trust?"},
+    {n:25,iso:"2026-08-25",topic:"Legacy",p:["Help Macharia build a life that outlives him. May his kindness, wisdom, generosity, and courage echo through the lives he touches and the generations that follow. Let his daughters remember his love, his friends remember his loyalty, and his work reflect the difference he made. May the legacy he leaves be measured not only by success, but by the people whose lives are better because he lived. Amen."],t:"What is well planted cannot be pulled up. What is well held cannot slip away. So it continues, generation after generation.",s:"Tao Te Ching, 54",q:"What do you want to be true in twenty years?"},
+    {n:26,iso:"2026-08-26",topic:"Abundance",p:["Bless Macharia beyond what he can imagine. Not only with resources, but with peace, wisdom, meaningful work, deep relationships, good health, and a generous spirit. Let him flourish in every season. Open doors no one else can open, bring the right people alongside him, and establish the work of his hands. May abundance overflow from his life into the lives of everyone around him. Amen."],t:"The sage does not store things up. The more he does for others, the more he has for himself.",s:"Tao Te Ching, 81",q:"What would \u201cmore than enough\u201d actually look like?"},
+    {n:27,iso:"2026-08-27",topic:"Thanksgiving",p:["Thank You for every prayer You have already begun answering. Thank You for sustaining Macharia through difficult seasons and for preparing him for what lies ahead. Thank You for every lesson that has strengthened him, every setback that has shaped him, and every blessing he has yet to recognise. As he stands on the threshold of a new decade, fill his heart with gratitude instead of fear and anticipation instead of uncertainty. May he walk into tomorrow knowing he has never been alone and never will be. Amen."],t:"The earth gives me a body, wears me out with life, eases me with age, and rests me with death. What makes my life good makes my death good also.",s:"Zhuangzi, 6",q:"What has already been answered?"},
+    {n:28,iso:"2026-08-28",topic:"Blessing",p:["Today I thank You for forty years of Macharia's life. Thank You for every lesson, every joy, every heartbreak, every victory, and every moment that has shaped him into the man he is becoming. As he enters this new decade, bless him with health that is strong, wisdom that is deep, courage that is unwavering, peace that surpasses understanding, and joy that no circumstance can steal. May his work prosper, his relationships flourish, his home be filled with laughter, and his heart remain anchored in You.","Let this decade be marked not by striving but by fruitfulness; not by fear but by freedom; not by merely surviving but by fully living. May he become more himself with every passing year, the man You dreamed of before he took his first breath. I speak life over him. I speak hope over him. I speak blessing over him. May goodness and mercy follow him all the days of his life. Amen."],benediction:"May the next forty years be even more beautiful than the first. Not because they are easier, but because he walks them wiser, freer, healthier, and more deeply loved.",t:"Deep roots and a firm foundation. This is the way of long life and enduring sight.",s:"Tao Te Ching, 59",q:"Forty years. What would you say to the man who started them?"}
+  ];
+
+  SAMPLE = {
+    1:"Slept properly for the first time in weeks. Didn't check the phone until after seven.",
+    2:"Called mum. Longer than usual.",
+    4:"Had the conversation. It went better than I'd built it up to be.",
+    7:"Njeri asked me what I want to be when I grow up. I didn't have an answer and that was alright.",
+    10:"Left the office at five. Nobody died.",
+    15:"Ordered the parts for the 76. Small thing, but it felt like hope."
+    };
+
+  state = { tab:"prayer", day:1, todayN:1, opened:false, coverLift:false, coverGoing:false, turning:false, dir:"fwd", fromN:1, lockN:null, entries:{}, expanded:null, archiveOpen:false };
+
+  componentDidMount(){
+    try{ const raw = localStorage.getItem("pyif.reflections"); if(raw) this.setState({entries:JSON.parse(raw)}); }catch(e){}
+  }
+  persist(entries){ try{ localStorage.setItem("pyif.reflections", JSON.stringify(entries)); }catch(e){} }
+
+  d(n){ return this.DAYS[Math.min(28,Math.max(1,n))-1]; }
+  dt(iso){ return new Date(iso+"T09:00:00"); }
+  caps(iso){ const d=this.dt(iso); return d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long"}); }
+  longDate(iso){ const d=this.dt(iso); return d.toLocaleDateString("en-GB",{day:"numeric",month:"long"}); }
+
+  turn(to,dir){
+    if(this.state.turning) return;
+    this.setState({turning:true,dir,fromN:this.state.day,day:to});
+    clearTimeout(this._t);
+    this._t = setTimeout(()=>this.setState({turning:false}), 880);
+  }
+
+  renderVals(){
+    const s=this.state, P=this.props;
+    const todayN=s.todayN, day=this.d(s.day), today=this.d(todayN);
+
+    const warmth = P.paperWarmth || "Cream stock";
+    const pair = P.typePairing || "Editorial";
+    const paper = warmth==="Bleached linen" ? ["#FBF8F1","var(--grain-soft)","#F5F0E4"]
+      : warmth==="Aged foolscap" ? ["#EBE0C9","var(--grain-heavy)","#E4D8BE"]
+      : ["#F4EEE1","var(--grain)","#EFE7D6"];
+    const type = pair==="Delicate" ? ["'Cormorant Garamond'","Karla"]
+      : pair==="Bookish" ? ["Spectral","Spectral"] : ["Newsreader","'Libre Franklin'"];
+    const appTheme = "--pbg:"+paper[0]+";--pgrain:"+paper[1]+";--pbg2:"+paper[2]+";--hf:"+type[0]+";--bf:"+type[1];
+
+    const dv = {
+      n:day.n, topic:day.topic, paras:day.p, thought:day.t, src:day.s, prompt:day.q,
+      caps:this.caps(day.iso), benediction:day.benediction || null
+    };
+
+    const short = {"His Calling":"Calling","His Mind":"Mind"};
+    const hyph = {"Relationships":"Relation­ships","Thanksgiving":"Thanks­giving","Fatherhood":"Father­hood","Leadership":"Leader­ship","Protection":"Protec­tion","Creativity":"Crea­tivity","Abundance":"Abun­dance","Discipline":"Disci­pline","Provision":"Pro­vision","Gratitude":"Grati­tude","Integrity":"Integ­rity"};
+    const cells = this.DAYS.slice(0,27).map(x=>({
+      n:x.n, topic:hyph[x.topic]||short[x.topic]||x.topic, dd:String(x.n).padStart(2,"0"),
+      isToday:x.n===todayN, isPast:x.n<todayN, locked:x.n>todayN,
+      tap:()=>this.tapDay(x.n)
+    }));
+
+    const entriesFor = n => (s.entries[n] !== undefined ? s.entries[n] : (this.SAMPLE[n]||""));
+    let pastCount = 0;
+    for(let n=todayN-1;n>=1;n--){ if(entriesFor(n)) pastCount++; }
+
+    const byIso = {}; this.DAYS.forEach(x=>{ byIso[x.iso]=x.n; });
+    const lead = iso => (this.dt(iso).getDay()+6)%7;
+    const archiveCells = [];
+    for(let i=0;i<lead("2026-08-01");i++) archiveCells.push({blank:true});
+    const push = (iso,dd) => {
+      const n = byIso[iso];
+      if(!n){ archiveCells.push({dd,outside:true}); return; }
+      if(n>=todayN){ archiveCells.push({dd,ahead:true}); return; }
+      const written = !!entriesFor(n), sel = s.expanded===n;
+      archiveCells.push({dd, selected:sel, written:written&&!sel, blankDay:!written&&!sel,
+        tap:()=>this.setState({expanded:sel?null:n})});
+    };
+    for(let d=1;d<=31;d++) push("2026-08-"+String(d).padStart(2,"0"), String(d));
+
+    let card = null;
+    if(s.expanded){
+      const x=this.d(s.expanded), txt=entriesFor(s.expanded);
+      card = { n:s.expanded, topic:x.topic, caps:this.caps(x.iso), prompt:x.q,
+        text: txt || "Left blank that day.", color: txt ? "#403A32" : "#B3A995" };
+    }
+
+    const tabs=[["calendar","Calendar"],["prayer","Prayer"],["reflections","Reflections"],["about","Old Love"]]
+      .map(([k,label])=>({label, on:s.tab===k, off:s.tab!==k, tap:()=>this.setState({tab:k, day:k==="prayer"?todayN:s.day, lockN:null})}));
+
+    return {
+      appTheme,
+      d:dv, today:{caps:this.caps(today.iso), topic:today.topic, prompt:today.q}, todayN,
+      todayLabel: this.longDate(today.iso)+" · "+today.topic,
+      setToday:e=>{const v=+e.target.value; this.setState({todayN:v, day:v, pick:v, expanded:null});},
+
+      isPrayer:s.tab==="prayer", isCal:s.tab==="calendar", isRef:s.tab==="reflections", isAbout:s.tab==="about",
+      thoughtOn: P.showThought !== false,
+      tabs, cells,
+      tapFinal:()=>this.tapDay(28),
+
+      turning:s.turning, from:{n:this.d(s.fromN).n, topic:this.d(s.fromN).topic, excerpt:this.d(s.fromN).p[0].slice(0,150)+"…"},
+      leafStyle:"position:absolute;inset:0;transform-origin:"+(s.dir==="fwd"?"left":"right")+" center;animation:"+(s.dir==="fwd"?"pgFwd":"pgBack")+" 880ms cubic-bezier(.5,.03,.28,1) forwards;backface-visibility:hidden;box-shadow:0 0 50px rgba(43,39,36,.22);overflow:hidden",
+
+      coverUp: !s.opened,
+      coverDay: today.n, coverTopic: today.topic,
+      coverDate: this.dt(today.iso).toLocaleDateString("en-GB",{day:"numeric",month:"short"}),
+      coverDiscStyle:"position:relative;width:216px;height:216px;margin:42px 0 38px;transition:opacity 900ms ease,transform 1000ms cubic-bezier(.4,0,.2,1);"+(s.coverLift?"opacity:0;transform:scale(.74)":"opacity:1;transform:scale(1)"),
+      coverFootStyle:"position:absolute;left:0;right:0;bottom:54px;text-align:center;transition:opacity 700ms ease;opacity:"+(s.coverLift?"0":"1"),
+      coverStyle: "position:absolute;inset:0;z-index:44;overflow:hidden;cursor:pointer;transform-origin:left center;backface-visibility:hidden;"+(s.coverGoing?"animation:coverOpen 1150ms cubic-bezier(.5,.03,.28,1) forwards;box-shadow:0 0 60px rgba(43,39,36,.25)":""),
+      openCover:()=>{ if(s.coverLift) return; this.setState({coverLift:true});
+        setTimeout(()=>this.setState({coverGoing:true}),950);
+        setTimeout(()=>this.setState({opened:true}),2070); },
+
+      lockMsg: s.lockN ? "This prayer will be waiting for you on "+this.longDate(this.d(s.lockN).iso)+"." : null,
+      lockTopic: s.lockN ? "Day "+s.lockN+" · "+this.d(s.lockN).topic : "",
+      closeLock:()=>this.setState({lockN:null}),
+
+      draft: s.entries[todayN] !== undefined ? s.entries[todayN] : "",
+      onDraft:e=>{ const en={...s.entries,[todayN]:e.target.value}; this.setState({entries:en}); this.persist(en); },
+      hasPast:todayN>1, noPast:todayN<=1, pastCount,
+      archiveOpen:s.archiveOpen,
+      chevronStyle:"display:block;width:7px;height:7px;border-right:1.4px solid #A9622C;border-bottom:1.4px solid #A9622C;transition:transform 260ms ease;transform:rotate("+(s.archiveOpen?"-135deg":"45deg")+")",
+      toggleArchive:()=>this.setState({archiveOpen:!s.archiveOpen}),
+      dowLabels:["M","T","W","T","F","S","S"], archiveCells,
+      card, noCard:!card, closeCard:()=>this.setState({expanded:null}),
+      backToRecord:()=>this.setState({tab:"prayer", day:todayN, opened:false, coverLift:false, coverGoing:false, lockN:null}),
+
+
+
+    };
+  }
+
+  tapDay(n){
+    if(n>this.state.todayN){ this.setState({lockN:n}); return; }
+    this.setState({tab:"prayer", day:n, lockN:null});
+  }
+}
+</script>
+</body>
+</html>
