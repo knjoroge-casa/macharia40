@@ -13,7 +13,7 @@ function getToday() {
   const start = new Date('2026-08-01')
   const end = new Date('2026-08-28')
   const now = new Date()
-  if (now < start) return 28 // PREVIEW: remove before launch
+  if (now < start) return 1
   if (now > end) return 28
   return Math.min(28, Math.floor((now - start) / 86400000) + 1)
 }
