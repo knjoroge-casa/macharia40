@@ -9,6 +9,8 @@ export default function OldLove() {
           <p className="ol-legend">LEGEND HAS IT THAT THEY WERE NEVER APART FOR MORE THAN A FEW HOURS.</p>
         </div>
 
+        <img src="/IMG_4246.jpeg" alt="" className="ol-photo" />
+
         <div className="ol-body">
           <p className="ol-opening">This isn't a countdown. It's a pause.</p>
 
