@@ -9,20 +9,23 @@ import LockedModal from './components/LockedModal.jsx'
 import EntryModal from './components/EntryModal.jsx'
 import data from '../prayers.json'
 
+function localDateStr() {
+  const d = new Date()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
 function getToday() {
-  const start = new Date('2026-08-01')
-  const end = new Date('2026-08-28')
-  const now = new Date()
-  if (now < start) return 1
-  if (now > end) return 28
-  return Math.min(28, Math.floor((now - start) / 86400000) + 1)
+  const date = localDateStr()
+  if (date < '2026-08-01') return 0
+  if (date > '2026-08-28') return 28
+  return Math.min(28, Math.floor((new Date(date) - new Date('2026-08-01')) / 86400000) + 1)
 }
 
 const today = getToday()
 
 export default function App() {
   const [tab, setTab] = useState('prayer')
-  const [day, setDay] = useState(today)
+  const [day, setDay] = useState(Math.max(1, today))
   const [coverUp, setCoverUp] = useState(true)
   const [coverPhase, setCoverPhase] = useState('idle')
   const [turning, setTurning] = useState(false)
@@ -35,7 +38,7 @@ export default function App() {
     JSON.parse(localStorage.getItem('reflections') || '{}')
   )
 
-  const unlocked = (d) => new Date() >= new Date('2026-08-01') && d <= today
+  const unlocked = (d) => today > 0 && d <= today
 
   const navigateToDay = useCallback((newDay, direction) => {
     if (!unlocked(newDay)) {
@@ -90,7 +93,7 @@ export default function App() {
       {coverUp && (
         <Cover
           today={today}
-          prayer={data.days[today - 1]}
+          prayer={data.days[Math.max(1, today) - 1]}
           phase={coverPhase}
           onReveal={handleCoverReveal}
         />
@@ -99,7 +102,7 @@ export default function App() {
       {!coverUp && (
         <>
           <div style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
-            {tab === 'prayer' && (
+            {tab === 'prayer' && unlocked(day) && (
               <Prayer
                 day={day}
                 today={today}
@@ -110,6 +113,15 @@ export default function App() {
                 fromPrayer={fromDay ? data.days[fromDay - 1] : null}
                 unlocked={unlocked}
                 onNavigate={navigateToDay}
+              />
+            )}
+            {tab === 'prayer' && !unlocked(day) && (
+              <Calendar
+                today={today}
+                days={data.days}
+                unlocked={unlocked}
+                onDayTap={handleCalendarTap}
+                onShowCover={() => { setCoverUp(true); setCoverPhase('idle') }}
               />
             )}
             {tab === 'calendar' && (
