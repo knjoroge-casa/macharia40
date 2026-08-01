@@ -40,7 +40,7 @@ Plain-English renderings of Tao Te Ching / Zhuangzi passages, one chosen to sit 
 
 19. **Patience** — "Who can be still until the muddy water clears? Who can stay at rest until the moment to move arrives?" — *Tao Te Ching, 15*
 
-20. **Gratitude** — "There is no greater misfortune than not knowing what is enough." — *Tao Te Ching, 46*
+20. **Body** — "He who values his body more than dominion over the empire can be entrusted with the empire." — *Tao Te Ching, 13*
 
 21. **Creativity** — "The cook's blade has been used nineteen years and is still as sharp as new. He does not cut through; he finds the openings that are already there." — *Zhuangzi, 3*
 
