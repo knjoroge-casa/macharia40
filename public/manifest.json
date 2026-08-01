@@ -7,5 +7,7 @@
   "orientation": "portrait",
   "background_color": "#F4EEE1",
   "theme_color": "#F4EEE1",
-  "icons": []
+  "icons": [
+    { "src": "/40vinyl.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
 }
